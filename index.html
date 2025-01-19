@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./checkboxes.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="topBar">
+        <div class="gangRating">Gang Rating: <span id="gangRating"></span></div>
+        <button class="addGanger">Add Member</button>
+        <button class="saveGang">Save</button>
+    </div>
+    <!-- modals -->
+    <div class="invEquipmentModal">
+        <div class="result">
+            <div class="options">
+                <div class="weaponStat" id="weaponName"></div>
+                <div class="weaponStat">
+                    <span>distance:</span>
+                    <div class="distanceHit">
+                        <span id="distanceShort"></span>
+                        <span id="distanceLong"></span>
+                    </div>
+                </div>
+                <div class="weaponStat">
+                    <span> to hit:</span>
+                    <div class="distanceHit">
+                        <span id="hitShort"></span>
+                        <span id="hitLong"></span>
+                    </div>
+                </div>
+                <div class="weaponStat" id="strength"></div>
+                <div class="weaponStat" id="damage"></div>
+                <div class="weaponStat" id="saveMod"></div>
+                <div class="weaponStat" id="ammoRoll"></div>
+                <div class="weaponStat" id="special"></div>
+            </div>
+            <div class="remove">remove item</div>
+        </div>
+    </div>
+    <div class="addEquipmentModal">
+        <div>
+            <div class="topRow">
+                <span></span>
+                <span></span>
+                <span style="text-align: center;">range</span>
+                <span style="text-align: center;">to hit</span>
+                <span></span>
+                <span></span>
+                <span style="text-align: center;">save</span>
+                <span style="text-align: center;">ammo</span>
+                <span></span>
+            </div>
+            <div class="row ignore weaponStats">
+                <span>item</span>
+                <span>cost</span>
+                <span>short</span>
+                <span>long</span>
+                <span>short</span>
+                <span>long</span>
+                <span>str</span>
+                <span>dmg</span>
+                <span>mod</span>
+                <span>roll</span>
+                <span>special effects</span>
+            </div>
+        </div>
+        <div class="options" id="equipmentOptions">
+            <div id="opistol" class="row ignore top">pistols</div>
+            <div id="obasic" class="row ignore pistols">basic</div>
+            <div id="ospecial" class="row ignore basics">special</div>
+            <div id="oheavy" class="row ignore specials">heavy</div>
+            <div id="ohand-to-hand" class="row ignore heavies">H-T-H</div>
+            <div id="ogrenade" class="row ignore handToHands">grenades</div>
+            <div class="row ignore grenades"></div>
+        </div>
+        <div class="close">Close menu</div>
+    </div>
+    <!-- start gang info -->
+    
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    // Your web app's Firebase configuration
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAO9GmtY5gBB7tbER2fHaB7LunQ80eQ6Dg",
+        authDomain: "escher-gang.firebaseapp.com",
+        projectId: "escher-gang",
+        storageBucket: "escher-gang.firebasestorage.app",
+        messagingSenderId: "849333959217",
+        appId: "1:849333959217:web:c291c9792196f6616df310"
+    };
+
+
+    // Initialize Firebase
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const dbRef = ref(database);
+
+    let gang = [];
+    const loadGang = gang => {
+        gang.forEach((ganger, index) => {
+            const memberNumber = index + 1;
+            const gangMemberContainer = document.createElement('div');
+            gangMemberContainer.classList.add(`gangMember`,`member${memberNumber}`)
+            gangMemberContainer.innerHTML = `
+                <div class="memberName" ><input id="name${memberNumber}" type="text" value="${ganger.name}"></div>
+                <div class="memberNumber" id="member${memberNumber}">${memberNumber}</div>
+                <div class="characteristicsBox">
+                    <div class="statsBox">
+                        <div class="stat">
+                            <span>M</span>
+                            <input class="move" type="number" min="1" max="10" value="${ganger.move}" id="move${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>WS</span>
+                            <input class="ws skill" type="number" min="1" max="10" value="${ganger.ws}" id="ws${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>BS</span>
+                            <input class="bs skill" type="number" min="1" max="10" value="${ganger.bs}" id="bs${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>S</span>
+                            <input class="strength" type="number" min="1" max="10" value="${ganger.strength}" id="strength${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>T</span>
+                            <input class="toughness" type="number" min="1" max="10" value="${ganger.toughness}" id="toughness${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>W</span>
+                            <input class="wounds" type="number" min="1" max="10" value="${ganger.wounds}" id="wounds${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>I</span>
+                            <input class="initiative" type="number" min="1" max="10" value="${ganger.initiative}" id="initiative${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>A</span>
+                            <input class="attacks" type="number" min="1" max="10" value="${ganger.attacks}" id="attacks${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>Ld</span>
+                            <input class="leadership" type="number" min="1" max="10" value="${ganger.leadership}" id="leadership${memberNumber}">
+                        </div>
+                    </div>
+                    <div class="fw" id="fw${memberNumber}">FW: </div>
+                </div>
+                <div class="equipmentBox" id="equipmentBox${memberNumber}">
+                    <div class="addEquipment" id="add${memberNumber}">add item</div>
+                </div>
+                <div class="costBox">
+                    <input class="gangerCost" id="cost${memberNumber}" type="text" value="${ganger.cost}">
+                </div>
+                <div class="expBox">
+                    <input class="gangerExp" id="exp${memberNumber}" type="text" value="${ganger.exp}">
+                </div>
+            `
+            document.querySelector('body').appendChild(gangMemberContainer);
+            const inventoryBox = document.getElementById(`equipmentBox${memberNumber}`);
+            ganger.inventory.forEach((item, index) => {
+                const invSpan = document.createElement('span');
+                invSpan.innerText = item;
+                inventoryBox.appendChild(invSpan);
+                if (ganger.inventory[index+1] != undefined) {
+                    inventoryBox.innerHTML += ` `;
+                }
+            });
+            const gangerSkillBox = [];
+            gangerSkillBox.push(document.querySelector(`#ws${memberNumber}`));
+            gangerSkillBox.push(document.querySelector(`#bs${memberNumber}`));
+            gangerSkillBox.forEach(member => {
+                const gangMemberNumber = member.id[member.id.length -1];
+                updateWSBS(member.value, gangMemberNumber);
+                member.addEventListener('change', e => {
+                    updateWSBS(e.target.value, gangMemberNumber);
+                });
+            });
+            document.getElementById(`add${memberNumber}`).addEventListener('click', e => {
+                currentGangMember = e.target.id[e.target.id.length - 1];
+                displayAddModal()
+            });
+        });
+        const selections = document.querySelectorAll(`.equipmentBox span`);
+        selections.forEach(selection => getDisplayInfo(selection));
+
+        const memberStatuses = document.querySelectorAll('.gangMember .memberNumber');
+        memberStatuses.forEach(member => {
+            member.addEventListener('click', e => {
+                const gangMemberBox = document.querySelector(`.${e.target.id}`);
+                const memberStatus = [...gangMemberBox.classList];
+                if (memberStatus.includes('dead')) {
+                    gangMemberBox.classList.remove('pinned', 'downed', 'dead');
+                } else if (memberStatus.includes('downed')) {
+                    gangMemberBox.classList.add('dead');
+                } else if (memberStatus.includes('pinned')) {
+                    gangMemberBox.classList.add('downed');
+                } else {
+                    gangMemberBox.classList.add('pinned');
+                }
+            });
+        });
+
+        const memberNames = document.querySelectorAll('.gangMember .memberName');
+        memberNames.forEach(member => {
+            member.addEventListener('click', e => {
+                const gangMember = e.target.parentElement.classList[1];
+                const gangMemberNumber = gangMember[gangMember.length - 1];
+                const gangMemberBox = document.querySelector(`.member${gangMemberNumber}`);
+                gangMemberBox.classList.remove('pinned', 'downed', 'dead');
+            });
+        });
+    }
+
+    const calcGangRating = () => {
+       const gangRating = document.getElementById('gangRating');
+       const gangerCost = document.querySelectorAll('.gangerCost');
+       const gangerExp = document.querySelectorAll('.gangerExp');
+       let totalGangRating = 0;
+       gangerCost.forEach(ganger => totalGangRating += ~~ganger.value);
+       gangerExp.forEach(ganger => totalGangRating += ~~ganger.value);
+       gangRating.innerHTML = totalGangRating;
+    }
+
+    get(dbRef).then((snapshot) => {
+
+    if(snapshot.exists()){
+        gang = snapshot.val();
+        loadGang(gang);
+    } else {
+        console.log("No data available")
+    }
+    }).then(() => {
+        calcGangRating();
+    }).catch((error) => {
+    console.log(error)
+    });
+
+    const saveState = [];
+
+    const saveGang = () => {
+        const fullGang = document.querySelectorAll('.gangMember');
+        fullGang.forEach((member, index) => {
+            const memberData = {};
+            memberData.name = document.getElementById(`name${index+1}`).value;
+            memberData.move = document.getElementById(`move${index+1}`).value;
+            memberData.ws = document.getElementById(`ws${index+1}`).value;
+            memberData.bs = document.getElementById(`bs${index+1}`).value;
+            memberData.strength = document.getElementById(`strength${index+1}`).value;
+            memberData.toughness = document.getElementById(`toughness${index+1}`).value;
+            memberData.wounds = document.getElementById(`wounds${index+1}`).value;
+            memberData.initiative = document.getElementById(`initiative${index+1}`).value;
+            memberData.attacks = document.getElementById(`attacks${index+1}`).value;
+            memberData.leadership = document.getElementById(`leadership${index+1}`).value;
+            memberData.cost = document.getElementById(`cost${index+1}`).value;
+            memberData.exp = document.getElementById(`exp${index+1}`).value;
+            memberData.inventory = [];
+            const rawInventory = document.getElementById(`equipmentBox${index+1}`).innerText;
+            const inventory = rawInventory.replace('add item','').trim().split(' ');
+            inventory.forEach(item => memberData.inventory.push(item));
+            saveState.push(memberData);
+        });
+
+        return set(dbRef, saveState);
+    }
+
+    document.querySelector('.saveGang').addEventListener('click', () => saveGang());
+</script>
+<!-- <script src="./dummySquad.js"></script> -->
+<script src="./allEquipment.js"></script>
+<script src="./inventoryModal.js"></script>
+<script src="./fleshWounds.js"></script>
+<script src="./statusChange.js"></script>
+<script src="./addGanger.js"></script>
+<script src="./addEquipModal.js"></script>
+<script src="./collapseEquipModal.js"></script>
+</html>

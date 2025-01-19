@@ -1,0 +1,200 @@
+body {
+    width: 748px;
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #050505;
+    color: azure;
+}
+input {
+    background: #050505;
+    color: azure;
+}
+.topBar {
+    display: flex;
+    justify-content: space-between;
+}
+.gangRating {
+    border: 8px solid azure;
+    width: max-content;
+}
+.invEquipmentModal {
+    position: absolute;
+    left: 30%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+#weaponName {
+    font-weight: 700;
+    font-size: 16px;
+    color: red;
+}
+.weaponStat {
+    display: flex;
+    flex-direction: column;
+}
+.distanceHit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 2px solid azure;
+    margin-bottom: 4px;
+}
+.addEquipmentModal {
+    height: 40vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #050505;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    padding: 2px;
+    border: 8px solid azure;
+    border-radius: 12px;
+}
+.options {
+    height: 220px;
+    padding: 4px;
+    overflow-y: scroll;
+    border: 4px solid azure;
+    border-radius: 4px;
+}
+.topRow {
+    display: grid;
+    grid-template-columns: 140px 27px 95px 75px 35px 35px 32px 30px 190px;
+    grid-column-gap: 5px;
+}
+.row {
+    display: grid;
+    grid-template-columns: 140px 27px 45px 45px 35px 35px 35px 35px 32px 30px 190px;
+    grid-column-gap: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.row.ignore {
+    cursor:auto;
+}
+.row:not(.weaponStats):hover {
+    background: azure;
+    color: #050505;
+}
+.options .ignore {
+    border-top: 1px solid azure;
+    border-bottom: 1px solid azure;
+    font-weight: 700;
+}
+.itemRow span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result {
+    background: #050505;
+    width: 90%;
+    position: relative;
+    z-index: 10;
+    border: 8px solid azure;
+    border-radius: 12px;
+    padding: 6px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.remove,
+.close {
+    border: 1px solid azure;
+    border-radius: 12px;
+    font-size: 125%;
+    background-color: darkred;
+    padding: 0 8px;
+    text-align: center;
+    margin-top: 10px;
+}
+.gangMember {
+    display: flex;
+}
+.pinned {
+    background: darkgoldenrod;
+}
+.downed {
+    background: red;
+}
+.dead {
+    background: darkred;
+}
+.memberName {
+    width: 100px;
+    border: 1px solid azure;
+}
+input[type="text"] {
+    width: 70px;
+    font-size: 11px;
+    border: none;
+}
+.memberName,
+.memberNumber,
+.costBox,
+.expBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border: 1px solid azure;
+}
+.memberNumber,
+.costBox,
+.expBox {
+    width: 40px;
+    font-size: 20px;
+}
+.fw {
+    display: flex;
+    align-items: center;
+}
+input.gangerExp,
+input.gangerCost {
+    width: 30px;
+    text-align: center;
+    font-size: 16px;
+}
+.characteristicsBox {
+    border: 1px solid azure;
+    display: flex;
+    flex-direction: column;
+}
+.statsBox {
+    display: flex;
+}
+.stat {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid azure;
+}
+.stat input {
+    width: 32px;
+}
+.equipmentBox {
+    border: 1px solid azure;
+    width: 240px;
+    position: relative;
+}
+.addEquipment {
+    width: 70px;
+    font-size: 16px;
+    border: 2px solid azure;
+    background: darkred;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 2px;
+}
+input[type="number"]::-webkit-inner-spin-button {
+    background-color: #050505;
+    color: azure;
+  }
