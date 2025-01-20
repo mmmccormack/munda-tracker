@@ -22,10 +22,11 @@ const displayInvModal = (val, top) => {
     getInvDetails(val);
 }
 const removeItem = (gangMemberNumber, item) => {
+    console.log(gangMemberNumber, {item})
     const itemToRemove = item;
     const equipment = document.querySelectorAll(`#equipmentBox${gangMemberNumber} span`);
     equipment.forEach(piece => {
-        if (piece.innerText == itemToRemove) piece.remove();
+        if (piece.innerText.trim() == itemToRemove) piece.remove();
     });
     hideInvModal();
 }

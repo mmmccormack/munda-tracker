@@ -13,7 +13,7 @@
     -webkit-appearance: none;
     appearance: none;
     /* For iOS < 15 to remove gradient background */
-    background-color: #fff;
+    background-color: azure;
     /* Not removed via appearance */
     margin: 0;
   }
@@ -28,18 +28,13 @@
     border-bottom-right-radius: 100%;
     transform: rotate(-45deg);
     border: 3px solid red;
-    background-color: black;
-  }
-  
-  .form-control + .form-control {
-    margin-top: 1em;
+    background-color: #050505;
   }
   input[type="checkbox"] {
     margin: 6px 4px;
     display: grid;
     place-content: center;
   }
-  
   input[type="checkbox"]::before {
     content: "";
     border-top-left-radius: 100%;
@@ -52,7 +47,6 @@
     transition: 120ms transform ease-in-out;
     box-shadow: inset 1em 1em red;
   }
-  
   input[type="checkbox"]:checked::before {
     transform: scale(1);
   }
