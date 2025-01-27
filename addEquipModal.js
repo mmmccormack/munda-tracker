@@ -58,6 +58,7 @@ const addToInventory = piece => {
     getDisplayInfo(equipmentPiece);
     const equipmentBox = document.getElementById(`equipmentBox${currentGangMember}`);
     equipmentBox.appendChild(equipmentPiece);
+    calcCost(currentGangMember, piece, 'add');
     hideAddModal();
 }
 
