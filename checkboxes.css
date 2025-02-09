@@ -27,7 +27,7 @@
     border-bottom-left-radius: 100%;
     border-bottom-right-radius: 100%;
     transform: rotate(-45deg);
-    border: 3px solid red;
+    border: 2px solid red;
     background-color: #050505;
   }
   input[type="checkbox"] {

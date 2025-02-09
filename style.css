@@ -20,6 +20,7 @@ input {
 }
 #gangRating {
     color: red;
+    font-weight: 700;
 }
 .invEquipmentModal {
     position: absolute;
@@ -135,9 +136,10 @@ input {
     border: 1px solid azure;
 }
 input[type="text"] {
-    width: 70px;
-    font-size: 11px;
+    width: 80px;
+    font-size: 12px;
     border: none;
+    font-weight: 700;
 }
 .memberName,
 .memberNumber,
@@ -190,6 +192,7 @@ input.gangerCost {
     width: 70px;
     font-size: 16px;
     border: 2px solid azure;
+    font-weight: 700;
     border-radius: 4px;
     background: darkred;
     display: flex;
