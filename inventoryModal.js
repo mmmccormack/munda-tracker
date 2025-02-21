@@ -15,11 +15,12 @@ const getInvDetails = equipment => {
     document.getElementById('special').innerText = `special: ${ae[equipment].special}`;
 }
 
-const displayInvModal = (val, top) => {
+const displayInvModal = (val, top, gangMemberNumber) => {
     hideAddModal();
     invModal.style.top = `${top}px`;
     invModal.style.display = 'flex';
     getInvDetails(val);
+    rollToHit(val, gangMemberNumber)
 }
 const removeItem = (gangMemberNumber, item) => {
     const itemToRemove = item;
@@ -39,7 +40,7 @@ const getDisplayInfo = (selection) => {
         const rect = e.target.getBoundingClientRect();
         const topPos = rect.top + 40;
         const value = e.target.innerText.trim();
-        displayInvModal(value, topPos);
+        displayInvModal(value, topPos, currentGangMember);
     });
 }
 

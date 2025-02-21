@@ -91,6 +91,16 @@ input {
     border-bottom: 1px solid azure;
     font-weight: 700;
 }
+.roll {
+    background: #050505;
+    color: yellow;
+    font-weight: bold;
+    text-align: center;
+    font-size: 125%;
+}
+.roll p {
+    margin: 0;
+}
 .itemRow span {
     display: flex;
     align-items: center;
