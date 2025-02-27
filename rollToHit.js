@@ -1,5 +1,4 @@
 const rollToHit = (val, gangMemberNumber) => {
-    console.log(gangMemberNumber);
     const weapon = ae[val];
     const weaponType = ae[val].type;
     let numberMinusSeven;

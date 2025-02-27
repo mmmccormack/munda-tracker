@@ -97,6 +97,8 @@ input {
     font-weight: bold;
     text-align: center;
     font-size: 125%;
+    overflow: hidden;
+    border: none;
 }
 .roll p {
     margin: 0;
@@ -216,4 +218,37 @@ input.gangerCost {
 input[type="number"]::-webkit-inner-spin-button {
     background-color: #050505;
     color: azure;
+  }
+  .diceRoller {
+    position: fixed;
+    right: 0;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .singleDiceRoll,
+  .doubleDiceRoll {
+    width: 150px;
+    height: 150px;
+  }
+  .rollButton {
+    width: 90px;
+    height: 40px;
+    font-size: 16px;
+    border: 2px solid azure;
+    font-weight: 700;
+    border-radius: 4px;
+    background: darkred;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+  }
+  .dice {
+    display: flex;
+  }
+  .rollResult {
+    font-size: 48px;
+    font-weight: bold;
   }
