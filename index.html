@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./checkboxes.css">
-    <title>Document</title>
+    <title>Necromunda Gang Tracker</title>
 </head>
 <body>
     <div class="topBar">
@@ -17,6 +17,13 @@
         <button class="saveGang">Save</button>
     </div>
     <!-- modals -->
+    <div class="killGangerModal">
+        <div class="result">
+            Are you sure you want to remove <p id="gangerToKill"></p> from your list of gangers?
+            <button id="kill">Yes</button>
+            <button id="abort">No</button>
+        </div>
+    </div>
     <div class="invEquipmentModal">
         <div class="result">
             <div class="options">
@@ -183,6 +190,9 @@
                 <div class="expBox">
                     <input class="gangerExp" id="exp${memberNumber}" type="text" value="${ganger.exp}">
                 </div>
+                <div class="removeBox">
+                    <button class="gangerRemove" id="remove${memberNumber}" type="text" name="${ganger.name}">Kill</button>
+                </div>
             `
             document.querySelector('body').appendChild(gangMemberContainer);
             const inventoryBox = document.getElementById(`equipmentBox${memberNumber}`);
@@ -238,6 +248,11 @@
                 gangMemberBox.classList.remove('pinned', 'downed', 'dead');
             });
         });
+        const killBoxes = document.querySelectorAll('.gangerRemove');
+        killBoxes.forEach(box => box.addEventListener('click', (e) => {
+            displayKillModal(e.target.id[e.target.id.length-1],e.target.name);
+        }));
+        calcGangRating()
     }
 
     const calcGangRating = () => {
@@ -248,6 +263,30 @@
        gangerCost.forEach(ganger => totalGangRating += ~~ganger.value);
        gangerExp.forEach(ganger => totalGangRating += ~~ganger.value);
        gangRating.innerHTML = totalGangRating;
+    }
+
+    const killModal = document.querySelector('.killGangerModal');
+
+    const hideKillModal = () => killModal.style.display = 'none';
+
+    const displayKillModal = (number, name) => {
+        hideAddModal();
+        hideInvModal();
+        document.getElementById('gangerToKill').innerText = name;
+        killModal.style.display = 'flex';
+        document.getElementById('kill').addEventListener('click', (e) => {
+            removeGanger(number);
+            e.stopImmediatePropagation();
+        });
+        document.getElementById('abort').addEventListener('click', () => hideKillModal());
+    }
+
+    const removeGanger = gangMemberNumber => {
+        gang.splice(~~gangMemberNumber-1, 1);
+        const gangList = document.querySelectorAll('.gangMember');
+        gangList.forEach(ganger => ganger.remove());
+        loadGang(gang);
+        hideKillModal();
     }
 
     get(dbRef).then((snapshot) => {

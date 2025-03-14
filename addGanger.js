@@ -56,6 +56,9 @@ const addGanger = () => {
         <div class="expBox">
             <input class="gangerExp" id="exp${memberNumber}" type="text">
         </div>
+        <div class="removeBox">
+            <button class="gangerRemove" id="remove${memberNumber}" type="text">Kill</button>
+        </div>
     `
     document.querySelector('body').appendChild(gangMemberContainer);
 

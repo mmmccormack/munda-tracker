@@ -21,13 +21,3 @@ const updateWSBS = (updateNum, gangMemberNumber) => {
         document.getElementById(`fw${gangMemberNumber}`).appendChild(fleshWoundCounter);
     }
 }
-
-// const gangerSkillBoxes = document.querySelectorAll('.ws, .bs');
-// gangerSkillBoxes.forEach(member => {
-//     const gangMemberNumber = member.id[member.id.length -1];
-//     updateWSBS(member.value, gangMemberNumber);
-//     member.addEventListener('change', e => {
-//         updateWSBS(e.target.value, gangMemberNumber);
-//     });
-// });
-

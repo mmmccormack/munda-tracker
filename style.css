@@ -22,7 +22,8 @@ input {
     color: red;
     font-weight: 700;
 }
-.invEquipmentModal {
+.invEquipmentModal,
+.killGangerModal {
     position: absolute;
     left: 30%;
     display: none;
@@ -30,7 +31,21 @@ input {
     align-items: center;
     width: 30%;
 }
-#weaponName {
+.killGangerModal .result {
+    text-align: center;
+}
+.killGangerModal button {
+    margin: 20px auto;
+    border: solid 4px red;
+    border-radius: 6px;
+    background: #050505;
+    color: azure;
+    font-family: "Megrim", Helvetica, Arial, sans-serif;
+    height: 30px;
+    width: 100px;
+}
+#weaponName,
+#gangerToKill {
     font-weight: 700;
     font-size: 16px;
     color: red;
@@ -156,7 +171,8 @@ input[type="text"] {
 .memberName,
 .memberNumber,
 .costBox,
-.expBox {
+.expBox,
+.removeBox {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,7 +181,8 @@ input[type="text"] {
 }
 .memberNumber,
 .costBox,
-.expBox {
+.expBox,
+.removeBox {
     width: 40px;
     font-size: 20px;
 }
@@ -174,7 +191,8 @@ input[type="text"] {
     align-items: center;
 }
 input.gangerExp,
-input.gangerCost {
+input.gangerCost,
+input.gangerRemove {
     width: 30px;
     text-align: center;
     font-size: 16px;
