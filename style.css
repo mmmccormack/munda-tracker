@@ -137,7 +137,8 @@ input {
     flex-direction: column;
 }
 .remove,
-.close {
+.close,
+.closeItem {
     border: 1px solid azure;
     border-radius: 12px;
     font-size: 125%;

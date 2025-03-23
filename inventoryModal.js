@@ -55,3 +55,6 @@ remove.addEventListener('click', () => {
     const itemToRemove = document.getElementById('weaponName').innerText;
     removeItem(currentGangMember, itemToRemove)
 });
+
+const closeItem = document.querySelector('.closeItem');
+closeItem.addEventListener('click', () => hideInvModal());
