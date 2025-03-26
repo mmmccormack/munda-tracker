@@ -1,7 +1,7 @@
 const singleRoll = () => {
     let counter = 1;
     setInterval( () => {
-        if (counter < 150) {
+        if (counter < 100) {
             document.querySelector('.singleDiceRoll').innerHTML = ``;
             document.querySelector('.doubleDiceRoll').innerHTML = ``;
             const result = Math.floor(Math.random() * 6) + 1;
