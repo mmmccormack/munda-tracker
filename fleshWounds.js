@@ -7,7 +7,7 @@ const changeFWCount = (gangMemberNumber) => {
 }
 
 const updateWSBS = (updateNum, gangMemberNumber) => {
-    document.getElementById(`fw${gangMemberNumber}`).innerHTML = 'FW: ';
+    document.getElementById(`fw${gangMemberNumber}`).innerHTML = `FW: `;
     document.getElementById(`ws${gangMemberNumber}`).value = updateNum;
     document.getElementById(`bs${gangMemberNumber}`).value = updateNum;
     for (let i = 0; i < updateNum; i++) {
@@ -20,4 +20,9 @@ const updateWSBS = (updateNum, gangMemberNumber) => {
         });
         document.getElementById(`fw${gangMemberNumber}`).appendChild(fleshWoundCounter);
     }
+    const memberStatus = document.createElement('span');
+    memberStatus.classList.add('status');
+    memberStatus.id = `status${gangMemberNumber}`
+    memberStatus.innerHTML = `status: normal`
+    document.getElementById(`fw${gangMemberNumber}`).appendChild(memberStatus)
 }

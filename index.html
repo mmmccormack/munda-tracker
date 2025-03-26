@@ -229,15 +229,20 @@
         memberStatuses.forEach(member => {
             member.addEventListener('click', e => {
                 const gangMemberBox = document.querySelector(`.${e.target.id}`);
+                const status = document.querySelector(`#status${e.target.id[e.target.id.length-1]}`);
                 const memberStatus = [...gangMemberBox.classList];
                 if (memberStatus.includes('dead')) {
                     gangMemberBox.classList.remove('pinned', 'downed', 'dead');
+                    status.innerHTML = 'status: normal';
                 } else if (memberStatus.includes('downed')) {
                     gangMemberBox.classList.add('dead');
+                    status.innerHTML = 'status: dead';
                 } else if (memberStatus.includes('pinned')) {
                     gangMemberBox.classList.add('downed');
+                    status.innerHTML = 'status: downed';
                 } else {
                     gangMemberBox.classList.add('pinned');
+                    status.innerHTML = 'status: pinned';
                 }
             });
         });
@@ -248,7 +253,9 @@
                 const gangMember = e.target.parentElement.classList[1];
                 const gangMemberNumber = gangMember[gangMember.length - 1];
                 const gangMemberBox = document.querySelector(`.member${gangMemberNumber}`);
+                const status = document.querySelector(`#status${gangMemberNumber}`);
                 gangMemberBox.classList.remove('pinned', 'downed', 'dead');
+                status.innerHTML = 'status: normal';
             });
         });
         const killBoxes = document.querySelectorAll('.gangerRemove');
@@ -285,10 +292,8 @@
     }
 
     const removeGanger = gangMemberNumber => {
-        gang.splice(~~gangMemberNumber-1, 1);
-        const gangList = document.querySelectorAll('.gangMember');
-        gangList.forEach(ganger => ganger.remove());
-        loadGang(gang);
+        const memberToKill = document.querySelector(`.member${gangMemberNumber}`);
+        memberToKill.remove();
         hideKillModal();
     }
 

@@ -17,7 +17,7 @@ const getInvDetails = equipment => {
 
 const displayInvModal = (val, top, gangMemberNumber) => {
     hideAddModal();
-    invModal.style.top = `${top}px`;
+    invModal.style.top = `30%`;
     invModal.style.display = 'flex';
     getInvDetails(val);
     rollToHit(val, gangMemberNumber)

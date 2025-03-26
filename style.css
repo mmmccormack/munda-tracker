@@ -33,6 +33,9 @@ input {
     justify-content: center;
     align-items: center;
     width: 30%;
+    top: 30%;
+    position: fixed;
+    z-index: 100;
 }
 .killGangerModal .result {
     text-align: center;
@@ -152,6 +155,9 @@ input {
 }
 .gangMember {
     display: flex;
+}
+.status {
+    font-weight: bold;
 }
 .pinned {
     background: darkgoldenrod;
