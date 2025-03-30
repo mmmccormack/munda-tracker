@@ -147,6 +147,10 @@
 
     let gang = [];
     const loadGang = gang => {
+        if (gang.length > 0) {
+            const tutorialBlocks = document.querySelectorAll('.tutorial');
+            tutorialBlocks.forEach(block => block.remove());
+        }
         gang.forEach((ganger, index) => {
             const memberNumber = index + 1;
             const gangMemberContainer = document.createElement('div');
