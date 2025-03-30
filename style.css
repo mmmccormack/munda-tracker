@@ -25,6 +25,62 @@ input {
     color: red;
     font-weight: 700;
 }
+@keyframes bob {
+    50% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+.tutorial {
+    position: absolute;
+    color: yellow;
+    font-weight: 700;
+    text-align: center;
+    animation: bob 3s infinite ease;
+}
+.step1 {
+    top: 1%;
+    left: 20%;
+}
+.rollADice {
+    top: 8%;
+    left: 23%;
+    text-align: left;
+}
+.saveProgress {
+    top: 1%;
+    left: 63%;
+    text-align: left;
+}
+.addName {
+    top: 10%;
+    left: 2%;
+    text-align: left;
+}
+.adjustStats {
+    top: 28%;
+    left: 34%;
+}
+.adjustWounds {
+    top: 28%;
+    left: 14%;
+}
+.adjustWeapons {
+    top: 28%;
+    left: 56%;
+    text-align: right;
+}
+.adjustCostExp {
+    top: 10%;
+    left: 62%;
+}
+.remGanger {
+    top: 28%;
+    left: 72%;
+    text-align: right;
+}
 .invEquipmentModal,
 .killGangerModal {
     position: absolute;

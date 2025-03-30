@@ -1,4 +1,29 @@
+const tutorialBlocks = document.querySelectorAll('.tutorial');
+tutorialBlocks.forEach(block => {
+    if (block.classList.contains('step2')) {
+        block.style.display = 'none';
+    } else {
+        block.style.display = 'block';
+    }
+})
+
+let gangerClickCounter = 0;
+
 const addGanger = () => {
+    gangerClickCounter++;
+    if (gangerClickCounter == 1) {
+        // hide step 1 and show step 2
+        tutorialBlocks.forEach(block => {
+            if (block.classList.contains('step1')) {
+                block.remove();
+            } else {
+                block.style.display = 'block';
+            }
+        })
+    } else if (gangerClickCounter > 1) {
+        // hide all tutorials
+        tutorialBlocks.forEach(block => block.remove());
+    }
     const gangNumber = document.querySelectorAll('.gangMember').length;
     const memberNumber = gangNumber + 1;
     const gangMemberContainer = document.createElement('div');
