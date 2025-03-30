@@ -75,6 +75,7 @@ const addGanger = () => {
         currentGangMember = e.target.id[e.target.id.length - 1];
         displayAddModal()
     });
+    calcGangRating();
 }
 
 const addButton = document.querySelector('.addGanger');
