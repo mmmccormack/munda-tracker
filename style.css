@@ -253,6 +253,13 @@ input[type="text"] {
     width: 40px;
     font-size: 20px;
 }
+.costBox,
+.expBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 80%;
+}
 .fw {
     display: flex;
     align-items: center;
@@ -368,5 +375,13 @@ input[type="number"]::-webkit-inner-spin-button {
     }
     .largeDivider {
         display: none;
+    }
+}
+@media (max-width: 768px) {
+    .responsiveItem {
+        display: none;
+    }
+    .equipmentBox {
+        font-size: 80%;
     }
 }

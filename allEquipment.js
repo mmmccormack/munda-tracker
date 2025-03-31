@@ -116,7 +116,7 @@ const ae = {
         'saveMod' : '-1',
         'ammoRoll' : '6+',
         'special' : 'toxic dart, injuries, silent',
-        'cost' : '80+ 4D6'
+        'cost' : `${80 + 4 * Math.floor(Math.random() * 6)+ 1}`
     },
     'webpistol' : { 
         'type' : 'pistol',
@@ -133,7 +133,7 @@ const ae = {
         'saveMod' : '-',
         'ammoRoll' : '6+',
         'special' : 'web targets, solvent, capture',
-        'cost' : '120+ 4D6'
+        'cost' : `${120 + 4 * Math.floor(Math.random() * 6)+ 1}`
     },
     'autogun' : {
         'type' : 'basic',
@@ -388,7 +388,7 @@ const ae = {
         'saveMod' : '-1',
         'ammoRoll' : '6+',
         'special' : 'toxic dart, injuries, silent',
-        'cost' : '180+ 4D6'
+        'cost' : `${180 + 4 * Math.floor(Math.random() * 6)+ 1}`
     },
     'heavyflamer' : {
         'type' : 'heavy',
@@ -643,7 +643,7 @@ const ae = {
         'saveMod' : '-',
         'ammoRoll' : '-',
         'special' : 'dual-handed',
-        'cost' : '35+ 3D6'
+        'cost' : `${35 + 3 * Math.floor(Math.random() * 6)+ 1}`
     },
     'shockmaul' : {
         'type' : 'hand-to-hand',
@@ -660,7 +660,7 @@ const ae = {
         'saveMod' : '-2',
         'ammoRoll' : '-',
         'special' : 'out of action, injury',
-        'cost' : '35+ 3D6'
+        'cost' : `${35 + 3 * Math.floor(Math.random() * 6)+ 1}`
     },
     'powersword' : {
         'type' : 'hand-to-hand',
@@ -677,7 +677,7 @@ const ae = {
         'saveMod' : '-',
         'ammoRoll' : '-',
         'special' : 'parry',
-        'cost' : '40+ 3D6'
+        'cost' : `${40 + 3 * Math.floor(Math.random() * 6)+ 1}`
     },
     'powerfist' : {
         'type' : 'hand-to-hand',
@@ -694,7 +694,7 @@ const ae = {
         'saveMod' : '-',
         'ammoRoll' : '-',
         'special' : '-',
-        'cost' : '85+ 3D6'
+        'cost' : `${85 + 3 * Math.floor(Math.random() * 6)+ 1}`
     },
     'smokebomb' : {
         'type' : 'grenade',
@@ -711,7 +711,7 @@ const ae = {
         'saveMod' : '-',
         'ammoRoll' : '-',
         'special' : 'gas cloud, smoke',
-        'cost' : '10+ 3D6'
+        'cost' : `${10 + 3 * Math.floor(Math.random() * 6)+ 1}`
     },
     'chokebomb' : {
         'type' : 'grenade',
@@ -728,7 +728,7 @@ const ae = {
         'saveMod' : '-',
         'ammoRoll' : '-',
         'special' : 'gas cloud, choke',
-        'cost' : '15+ 2D6'
+        'cost' : `${15 + 2 * Math.floor(Math.random() * 6)+ 1}`
     },
     'scarebomb' : {
         'type' : 'grenade',
@@ -745,7 +745,7 @@ const ae = {
         'saveMod' : '-',
         'ammoRoll' : '-',
         'special' : 'gas cloud, scare',
-        'cost' : '20+ 2D6'
+        'cost' : `${20 + 2 * Math.floor(Math.random() * 6)+ 1}`
     },
     'photonflare' : {
         'type' : 'grenade',
@@ -762,7 +762,7 @@ const ae = {
         'saveMod' : '-',
         'ammoRoll' : '-',
         'special' : 'blast, blind',
-        'cost' : '20+ 2D6'
+        'cost' : `${20 + 2 * Math.floor(Math.random() * 6)+ 1}`
     },
     'frag' : {
         'type' : 'grenade',
@@ -796,7 +796,7 @@ const ae = {
         'saveMod' : '-2',
         'ammoRoll' : '-',
         'special' : 'blast, plasma ball',
-        'cost' : '35+ 3D6'
+        'cost' : `${35 + 3 * Math.floor(Math.random() * 6)+ 1}`
     },
     'krak' : {
         'type' : 'grenade',
@@ -830,7 +830,7 @@ const ae = {
         'saveMod' : '-5',
         'ammoRoll' : '-',
         'special' : 'demolition',
-        'cost' : '40+ 3D6'
+        'cost' : `${40 + 3 * Math.floor(Math.random() * 6)+ 1}`
     },
     'hallucbomb' : {
         'type' : 'grenade',
@@ -847,6 +847,6 @@ const ae = {
         'saveMod' : '-',
         'ammoRoll' : '-',
         'special' : 'gas cloud, hallucinate',
-        'cost' : '40+ 4D6'
+        'cost' : `${40 + 4 * Math.floor(Math.random() * 6)+ 1}`
     },
 };

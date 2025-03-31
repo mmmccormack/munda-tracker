@@ -73,12 +73,14 @@ const addGanger = () => {
             <div class="fw" id="fw${memberNumber}">FW: </div>
         </div>
         <div class="equipmentBox" id="equipmentBox${memberNumber}">
-            <div class="addEquipment" id="add${memberNumber}">add item</div>
+            <div class="addEquipment" id="add${memberNumber}">add<span class="responsiveItem">&nbsp;item</span></div>
         </div>
         <div class="costBox">
+            <span>cost</span>
             <input class="gangerCost" id="cost${memberNumber}" type="text">
         </div>
         <div class="expBox">
+            <span>exp</span>
             <input class="gangerExp" id="exp${memberNumber}" type="text">
         </div>
         <div class="removeBox">
