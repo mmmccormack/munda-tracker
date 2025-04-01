@@ -353,7 +353,7 @@
             memberData.exp = document.getElementById(`exp${index+1}`).value;
             memberData.inventory = [];
             const rawInventory = document.getElementById(`equipmentBox${index+1}`).innerText;
-            const inventory = rawInventory.replace('add item','').trim().split(' ');
+            const inventory = rawInventory.replace('item','').trim().split(' ');
             inventory.forEach(item => memberData.inventory.push(item));
             saveState.push(memberData);
         });
