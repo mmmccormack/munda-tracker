@@ -24,7 +24,8 @@ const addGanger = () => {
         // hide all tutorials
         tutorialBlocks.forEach(block => block.remove());
     }
-    const gangNumber = document.querySelectorAll('.gangMember').length;
+    let gangNumber = document.querySelectorAll('.gangMember').length;
+    if (gangNumber == null) gangNumber = 0;
     const memberNumber = gangNumber + 1;
     const gangMemberContainer = document.createElement('div');
     gangMemberContainer.classList.add(`gangMember`,`member${memberNumber}`)
