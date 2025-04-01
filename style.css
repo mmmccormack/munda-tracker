@@ -70,11 +70,17 @@ textarea {
 }
 .adjustStats {
     top: 210px;
-    left: 330px;
+    left: 380px;
+    text-align: right;
+}
+.adjustStatus {
+    top: 210px;
+    left: 240px;
 }
 .adjustWounds {
     top: 210px;
-    left: 134px;
+    left: 110px;
+    text-align: left;
 }
 .adjustWeapons {
     top: 210px;
@@ -301,7 +307,7 @@ input.gangerRemove {
     position: relative;
 }
 .addEquipment {
-    width: 70px;
+    width: 50px;
     font-size: 16px;
     border: 2px solid azure;
     font-weight: 700;
