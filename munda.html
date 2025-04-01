@@ -248,6 +248,7 @@
         const memberStatuses = document.querySelectorAll('.gangMember .status');
         memberStatuses.forEach(member => {
             member.addEventListener('click', e => {
+                console.log(e)
                 const gangMemberBox = document.querySelector(`.${e.target.parentElement.parentElement.parentElement.id}`);
                 const status = document.querySelector(`#status${e.target.id[e.target.id.length-1]}`);
                 const memberStatus = [...gangMemberBox.classList];
