@@ -271,7 +271,7 @@
         memberNames.forEach(member => {
             member.addEventListener('click', e => {
                 console.log(e)
-                const gangMember = e.target.parentElement.classList[1];
+                const gangMember = e.target.parentElement.parentElement.parentElement.classList[1];
                 const gangMemberNumber = gangMember[gangMember.length - 1];
                 const gangMemberBox = document.querySelector(`.member${gangMemberNumber}`);
                 const status = document.querySelector(`#status${gangMemberNumber}`);
