@@ -29,7 +29,7 @@ const addGanger = () => {
     const gangMemberContainer = document.createElement('div');
     gangMemberContainer.classList.add(`gangMember`,`member${memberNumber}`)
     gangMemberContainer.innerHTML = `
-        <div class="memberName"><input type="text" id="name${memberNumber}"></div>
+        <div class="memberName"><input type="textarea" id="name${memberNumber}"></div>
         <div class="memberNumber" id="member${memberNumber}">${memberNumber}</div>
         <div class="characteristicsBox">
             <div class="statsBox">
