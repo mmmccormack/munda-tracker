@@ -237,7 +237,7 @@ textarea {
     background: brown;
 }
 .dead {
-    background: darkred;
+    background: #4d0000;
 }
 .memberName {
     width: 100px;
