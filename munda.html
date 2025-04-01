@@ -157,7 +157,9 @@
             const gangMemberContainer = document.createElement('div');
             gangMemberContainer.classList.add(`gangMember`,`member${memberNumber}`)
             gangMemberContainer.innerHTML = `
-                <div class="memberName" ><input id="name${memberNumber}" type="textarea" value="${ganger.name}"></div>
+                <div class="memberName">
+                    <textarea id="name${memberNumber}" value="${ganger.name}"></textarea>
+                </div>
                 <div class="memberNumber" id="member${memberNumber}">${memberNumber}</div>
                 <div class="characteristicsBox">
                     <div class="statsBox">
@@ -373,5 +375,4 @@
 <script src="./calcCost.js"></script>
 <script src="./collapseEquipModal.js"></script>
 <script src="./diceRoller.js"></script>
-<script src="./tutorial.js"></script>
 </html>
