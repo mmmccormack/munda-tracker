@@ -31,7 +31,7 @@ const addGanger = () => {
     gangMemberContainer.innerHTML = `
         <div class="memberName">
             <textarea id="name${memberNumber}"></textarea>
-        /div>
+        </div>
         <div class="memberNumber" id="member${memberNumber}">${memberNumber}</div>
         <div class="characteristicsBox">
             <div class="statsBox">
