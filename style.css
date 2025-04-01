@@ -386,9 +386,6 @@ input[type="number"]::-webkit-inner-spin-button {
     }
 }
 @media (max-width: 768px) {
-    .responsiveItem {
-        display: none;
-    }
     .equipmentBox {
         font-size: 80%;
     }
