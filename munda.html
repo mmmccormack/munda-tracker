@@ -335,6 +335,11 @@
 
     const saveState = [];
 
+    const saveConfirmed = () => {
+        document.querySelector('body').classList.add('saved');
+        setTimeout(() => document.querySelector('body').classList.remove('saved'),3000)
+    }
+
     const saveGang = () => {
         calcGangRating();
         const fullGang = document.querySelectorAll('.gangMember');
@@ -358,7 +363,7 @@
             inventory.forEach(item => memberData.inventory.push(item));
             saveState.push(memberData);
         });
-
+        saveConfirmed();
         return set(ref(database, 'users/' + userID), saveState);
     }
 
