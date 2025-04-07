@@ -297,11 +297,25 @@
                     skillsModal.style.display = 'flex';
                 });
             });
+
+            const skillBox = document.getElementById(`gangerSkillsInjuries${memberNumber}`);
+            ganger.allSkills.forEach((skill, index) => {
+                const skillSpan = document.createElement('span');
+                skillSpan.innerText = skill;
+                skillBox.appendChild(skillSpan);
+                if (ganger.allSkills[index+1] != undefined) {
+                    skillBox.innerHTML += ` `;
+                }
+            });
+            const selectedSkills = document.querySelectorAll(`.gangerSkillsInjuries span`);
+            selectedSkills.forEach(skill => displaySkillInfo(skill))
+
             document.getElementById(`add${memberNumber}`).addEventListener('click', e => {
                 currentGangMember = e.target.id[e.target.id.length - 1];
                 displayAddModal()
             });
         });
+
         const selections = document.querySelectorAll(`.equipmentBox span`);
         selections.forEach(selection => getDisplayInfo(selection));
 
