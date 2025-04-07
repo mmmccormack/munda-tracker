@@ -26,7 +26,7 @@ const displaySkillInfo = (selection) => {
 
 const addToSkills = (gangMemberNumber, selectedSkill) => {
     const skillToAdd = document.createElement('span');
-    skillToAdd.innerText = ` ${selectedSkill}`;
+    skillToAdd.innerText = `  ${selectedSkill}`;
     displaySkillInfo(skillToAdd);
     const skillsBox = document.getElementById(`gangerSkillsInjuries${gangMemberNumber}`);
     skillsBox.appendChild(skillToAdd);
