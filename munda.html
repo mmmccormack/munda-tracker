@@ -184,7 +184,7 @@
             gangMemberContainer.innerHTML = `
                     <div class="memberNameAndType">
                         <div class="memberType">
-                            <select name="type${memberNumber}" id="type${memberNumber}" value="${ganger.type}">
+                            <select name="type${memberNumber}" id="type${memberNumber}">
                                 <option value="Gang Leader">Gang Leader</option>
                                 <option value="Heavy">Heavy</option>
                                 <option value="Ganger">Ganger</option>
@@ -260,6 +260,8 @@
                     </div>
             `
             document.querySelector('body').appendChild(gangMemberContainer);
+
+            document.getElementById(`type${memberNumber}`).value = `${ganger.type}`;
             const inventoryBox = document.getElementById(`equipmentBox${memberNumber}`);
             ganger.inventory.forEach((item, index) => {
                 const invSpan = document.createElement('span');
@@ -385,6 +387,7 @@
 
     if(snapshot.exists()){
         gang = snapshot.val();
+        console.log(gang)
         loadGang(gang);
     } else {
         console.log("No data available")
