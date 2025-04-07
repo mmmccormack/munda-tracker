@@ -28,11 +28,12 @@ option {
     color: azure;
 }
 textarea {
-    width: 64px;
+    width: 100px;
     height: 68px;
     font-size: 12px;
     resize: none;
     border: none;
+    background: transparent;
 }
 select {
     width: 100%;
@@ -255,6 +256,7 @@ select {
 .closeItem,
 .addSkill,
 .removeSkill,
+.closeAddSkill,
 .closeSkill {
     border: 1px solid azure;
     border-radius: 12px;
@@ -332,6 +334,7 @@ input[type="text"] {
 }
 .memberNumber {
     border: none;
+    width: 24px;
 }
 
 .statsAndItems {
@@ -409,7 +412,7 @@ input.gangerRemove {
     padding: 2px;
 }
 .addSkills {
-    width: 100px;
+    width: 77px;
     font-size: 14px;
     position: static;
 }

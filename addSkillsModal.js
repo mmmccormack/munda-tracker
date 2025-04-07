@@ -26,7 +26,7 @@ const displaySkillInfo = (selection) => {
 
 const addToSkills = (gangMemberNumber, selectedSkill) => {
     const skillToAdd = document.createElement('span');
-    skillToAdd.innerText = `  ${selectedSkill}`;
+    skillToAdd.innerHTML = `&nbsp;&nbsp;${selectedSkill}`;
     displaySkillInfo(skillToAdd);
     const skillsBox = document.getElementById(`gangerSkillsInjuries${gangMemberNumber}`);
     skillsBox.appendChild(skillToAdd);
@@ -51,4 +51,7 @@ document.querySelector('.removeSkill').addEventListener('click', e => {
 })
 document.querySelector('.closeSkill').addEventListener('click', e => {
     hideSkillsInfoModal();
+})
+document.querySelector('.closeAddSkill').addEventListener('click', e => {
+    hideSkillsModal();
 })

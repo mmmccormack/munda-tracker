@@ -118,7 +118,7 @@
                 </div>
             </div>
             <div class="addSkill">add skill</div>
-            <div class="closeItem">close</div>
+            <div class="closeAddSkill">close</div>
         </div>
     </div>
     <div class="skillsInfoModal">
@@ -244,11 +244,11 @@
                             </div>
                             <div class="costBox">
                                 <span>cost</span>
-                                <input class="gangerCost" id="cost${memberNumber}" type="text" value="0">
+                                <input class="gangerCost" id="cost${memberNumber}" type="text" value="${ganger.cost}">
                             </div>
                             <div class="expBox">
                                 <span>exp</span>
-                                <input class="gangerExp" id="exp${memberNumber}" type="text" value="0">
+                                <input class="gangerExp" id="exp${memberNumber}" type="text" value="${ganger.exp}">
                             </div>
                             <div class="removeBox">
                                 <button class="gangerRemove" id="remove${memberNumber}" type="text" name="${ganger.name}">Kill</button>
@@ -281,9 +281,33 @@
                     updateWSBS(e.target.value, gangMemberNumber);
                 });
             });
-            const addSkills = document.querySelectorAll('.addSkills');
+
+            
+
+            const skillBox = document.getElementById(`gangerSkillsInjuries${memberNumber}`);
+            if (ganger.allSkills != undefined) {
+                ganger.allSkills.forEach((skill, index) => {
+                    const skillSpan = document.createElement('span');
+                    skillSpan.innerText = skill;
+                    skillBox.appendChild(skillSpan);
+                });
+            } else {
+                skillBox.innerHTML += ` `;
+            }
+            const selectedSkills = document.querySelectorAll(`.gangerSkillsInjuries span`);
+            selectedSkills.forEach(skill => displaySkillInfo(skill))
+
+            document.getElementById(`add${memberNumber}`).addEventListener('click', e => {
+                currentGangMember = e.target.id[e.target.id.length - 1];
+                displayAddModal()
+            });
+        });
+
+        const addSkills = document.querySelectorAll('.addSkills');
             addSkills.forEach(button => {
+                console.log(button)
                 button.addEventListener('click', e => {
+                    e.stopPropagation();
                     currentGangMember = e.target.parentElement.id[e.target.parentElement.id.length - 1];
                     const skillOptions = document.querySelector('.skillOptions');
                     skillOptions.innerHTML = ``;
@@ -299,25 +323,6 @@
                     skillsModal.style.display = 'flex';
                 });
             });
-
-            const skillBox = document.getElementById(`gangerSkillsInjuries${memberNumber}`);
-            ganger.allSkills.forEach((skill, index) => {
-                if (ganger.allSkills[index+1] == undefined) {
-                    skillBox.innerHTML += ` `;
-                } else {
-                    const skillSpan = document.createElement('span');
-                    skillSpan.innerText = skill;
-                    skillBox.appendChild(skillSpan);
-                }
-            });
-            const selectedSkills = document.querySelectorAll(`.gangerSkillsInjuries span`);
-            selectedSkills.forEach(skill => displaySkillInfo(skill))
-
-            document.getElementById(`add${memberNumber}`).addEventListener('click', e => {
-                currentGangMember = e.target.id[e.target.id.length - 1];
-                displayAddModal()
-            });
-        });
 
         const selections = document.querySelectorAll(`.equipmentBox span`);
         selections.forEach(selection => getDisplayInfo(selection));
@@ -398,12 +403,12 @@
     console.log(error)
     });
 
-    const saveState = [];
-
+    
     const saveConfirmed = () => {
         document.querySelector('body').classList.add('saved');
         setTimeout(() => document.querySelector('body').classList.remove('saved'),3000)
     }
+    const saveState = [];
 
     const saveGang = () => {
         calcGangRating();
@@ -429,17 +434,22 @@
             inventory.forEach(item => memberData.inventory.push(item));
             memberData.allSkills = [];
             const rawSkills = document.getElementById(`gangerSkillsInjuries${index+1}`).innerText;
-            console.log({rawSkills})
             const finalSkills = rawSkills.replace(/\n/g,' ').trim().split(' ');
-            console.log({finalSkills})
+            finalSkills.shift();
+
             finalSkills.forEach(item => memberData.allSkills.push(item));
             saveState.push(memberData);
+            // for (let dataline in memberData) delete memberData[dataline];
         });
         saveConfirmed();
+        setTimeout(() => window.location.reload(), 1000)
         return set(ref(database, 'users/' + userID), saveState);
     }
 
-    document.querySelector('.saveGang').addEventListener('click', () => saveGang());
+    document.querySelector('.saveGang').addEventListener('click', e => {
+        saveGang();
+        e.stopImmediatePropagation();
+    });
 </script>
 <!-- <script src="./dummySquad.js"></script> -->
 <script src="./allEquipment.js"></script>

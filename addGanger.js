@@ -35,7 +35,7 @@ const addGanger = () => {
                         <select name="type${memberNumber}" id="type${memberNumber}">
                             <option value="Gang Leader">Gang Leader</option>
                             <option value="Heavy">Heavy</option>
-                            <option value="Ganger">Ganger</option>
+                            <option value="Ganger" default selected>Ganger</option>
                             <option value="Juve">Juve</option>
                         </select>
                     </div>
@@ -103,7 +103,7 @@ const addGanger = () => {
                         </div>
                     </div>
                     <div class="gangerSkillsInjuries" id="gangerSkillsInjuries${memberNumber}">
-                        <div class="addSkills" id="skills${memberNumber}">skills/injuries</div>
+                        <div class="addSkills" id="skills${memberNumber}">special</div>
                     </div>
                 </div>
     `
