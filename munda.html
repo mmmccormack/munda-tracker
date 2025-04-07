@@ -187,7 +187,7 @@
                             <select name="type${memberNumber}" id="type${memberNumber}">
                                 <option value="Gang Leader">Gang Leader</option>
                                 <option value="Heavy">Heavy</option>
-                                <option value="Ganger">Ganger</option>
+                                <option value="Ganger" default selected>Ganger</option>
                                 <option value="Juve">Juve</option>
                             </select>
                         </div>
@@ -387,7 +387,6 @@
 
     if(snapshot.exists()){
         gang = snapshot.val();
-        console.log(gang)
         loadGang(gang);
     } else {
         console.log("No data available")
@@ -429,8 +428,9 @@
             inventory.forEach(item => memberData.inventory.push(item));
             memberData.allSkills = [];
             const rawSkills = document.getElementById(`gangerSkillsInjuries${index+1}`).innerText;
-            const finalSkills = rawSkills.replace('skills/injuries','').trim().split(' ');
-            console.log(finalSkills)
+            console.log({rawSkills})
+            const finalSkills = rawSkills.replace(`skills/injuries`,'').trim().split(' ');
+            console.log({finalSkills})
             finalSkills.forEach(item => memberData.allSkills.push(item));
             saveState.push(memberData);
         });
