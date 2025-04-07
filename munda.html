@@ -412,7 +412,7 @@
             inventory.forEach(item => memberData.inventory.push(item));
             memberData.allSkills = [];
             const rawSkills = document.getElementById(`gangerSkillsInjuries${index+1}`).innerText;
-            const finalSkills = rawSkills.replace('item','').trim().split(' ');
+            const finalSkills = rawSkills.replace('skills/injuries','').trim().split(' ');
             finalSkills.forEach(item => memberData.allSkills.push(item));
             saveState.push(memberData);
         });
