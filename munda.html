@@ -302,11 +302,12 @@
 
             const skillBox = document.getElementById(`gangerSkillsInjuries${memberNumber}`);
             ganger.allSkills.forEach((skill, index) => {
-                const skillSpan = document.createElement('span');
-                skillSpan.innerText = skill;
-                skillBox.appendChild(skillSpan);
                 if (ganger.allSkills[index+1] != undefined) {
                     skillBox.innerHTML += ` `;
+                } else {
+                    const skillSpan = document.createElement('span');
+                    skillSpan.innerText = skill;
+                    skillBox.appendChild(skillSpan);
                 }
             });
             const selectedSkills = document.querySelectorAll(`.gangerSkillsInjuries span`);
@@ -430,7 +431,6 @@
             const rawSkills = document.getElementById(`gangerSkillsInjuries${index+1}`).innerText;
             console.log({rawSkills})
             const finalSkills = rawSkills.replace(/\n/g,' ').trim().split(' ');
-            finalSkills.shift();
             console.log({finalSkills})
             finalSkills.forEach(item => memberData.allSkills.push(item));
             saveState.push(memberData);
