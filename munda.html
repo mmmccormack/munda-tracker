@@ -430,6 +430,7 @@
             memberData.allSkills = [];
             const rawSkills = document.getElementById(`gangerSkillsInjuries${index+1}`).innerText;
             const finalSkills = rawSkills.replace('skills/injuries','').trim().split(' ');
+            console.log(finalSkills)
             finalSkills.forEach(item => memberData.allSkills.push(item));
             saveState.push(memberData);
         });
