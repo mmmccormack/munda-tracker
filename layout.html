@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./checkboxes.css">
+</head>
+<body>
+    <div class="skillsModal">
+        <div class="result">
+            <div class="skillList">
+                <div class="skillOptions">
+                </div>
+                <div class="skillDescriptions">
+                    description of skill
+                </div>
+            </div>
+            <div class="addSkill">add skill</div>
+            <div class="closeItem">close</div>
+        </div>
+    </div>
+    <div class="skillsInfoModal">
+        <div class="result">
+            <div class="skillInjuryTitle">
+            </div>
+            <div class="skillInjuryDesc"></div>
+            <div class="removeSkill">remove</div>
+            <div class="closeSkill">close</div>
+        </div>
+    </div>
+    <div class="gangMember member${memberNumber}">
+        <div class="memberNameAndType">
+            <div class="memberType">
+                <select name="type${memberNumber}" id="type${memberNumber}">
+                    <option value="Gang Leader">Gang Leader</option>
+                    <option value="Heavy">Heavy</option>
+                    <option value="Ganger">Ganger</option>
+                    <option value="Juve">Juve</option>
+                </select>
+            </div>
+            <div class="memberName">
+                <textarea id="name${memberNumber}"></textarea>
+                <div class="memberNumber" id="member${memberNumber}">${memberNumber}</div>
+            </div>
+        </div>
+        <div class="statsSkillsAndItems">
+            <div class="statsAndItems">
+                <div class="characteristicsBox">
+                    <div class="statsBox">
+                        <div class="stat">
+                            <span>M</span>
+                            <input class="move" type="number" min="1" max="10" value="${ganger.move}" id="move${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>WS</span>
+                            <input class="ws skill" type="number" min="1" max="10" value="${ganger.ws}" id="ws${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>BS</span>
+                            <input class="bs skill" type="number" min="1" max="10" value="${ganger.bs}" id="bs${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>S</span>
+                            <input class="strength" type="number" min="1" max="10" value="${ganger.strength}" id="strength${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>T</span>
+                            <input class="toughness" type="number" min="1" max="10" value="${ganger.toughness}" id="toughness${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>W</span>
+                            <input class="wounds" type="number" min="1" max="10" value="${ganger.wounds}" id="wounds${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>I</span>
+                            <input class="initiative" type="number" min="1" max="10" value="${ganger.initiative}" id="initiative${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>A</span>
+                            <input class="attacks" type="number" min="1" max="10" value="${ganger.attacks}" id="attacks${memberNumber}">
+                        </div>
+                        <div class="stat">
+                            <span>Ld</span>
+                            <input class="leadership" type="number" min="1" max="10" value="${ganger.leadership}" id="leadership${memberNumber}">
+                        </div>
+                    </div>
+                    <div class="fw" id="fw${memberNumber}">FW: </div>
+                </div>
+                <div class="equipmentBox" id="equipmentBox${memberNumber}">
+                    <div class="addEquipment" id="add${memberNumber}">item</div>
+                </div>
+                <div class="costBox">
+                    <span>cost</span>
+                    <input class="gangerCost" id="cost${memberNumber}" type="text" value="0">
+                </div>
+                <div class="expBox">
+                    <span>exp</span>
+                    <input class="gangerExp" id="exp${memberNumber}" type="text" value="0">
+                </div>
+                <div class="removeBox">
+                    <button class="gangerRemove" id="remove${memberNumber}" type="text" name="${ganger.name}">Kill</button>
+                </div>
+            </div>
+            <div class="gangerSkillsInjuries" id="gangerSkillsInjuries${memberNumber}">
+                <div class="addSkills" id="skills${memberNumber}">skills/injuries</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./allSkills.js"></script>
+<script>
+    const skillsModal = document.querySelector('.skillsModal');
+    const skillsInfoModal = document.querySelector('.skillsInfoModal');
+    const addSkills = document.querySelectorAll('.addSkills');
+    let currentSelectedSkill;
+    let currentGangMember;
+
+    const hideSkillsModal = () => skillsModal.style.display = 'none';
+    const hideSkillsInfoModal = () => skillsInfoModal.style.display = 'none';
+
+
+    const displaySkillModal = val => {
+        skillsInfoModal.style.top = `30%`;
+        skillsInfoModal.style.display = 'flex';
+        document.querySelector('.skillInjuryTitle').innerText = val;
+        document.querySelector('.skillInjuryDesc').innerText = as[val].description;
+    }
+
+    const displaySkillInfo = (selection) => {
+        hideSkillsInfoModal();
+        selection.addEventListener('click', e => {
+            currentSelectedSkill = e.target.innerText;
+            currentGangMember = e.target.parentElement.id[e.target.parentElement.id.length - 1];
+            const value = e.target.innerText.trim();
+            displaySkillModal(value);
+        });
+    }
+
+    const addToSkills = (gangMemberNumber, selectedSkill) => {
+        const skillToAdd = document.createElement('span');
+        skillToAdd.innerHTML = `&nbsp;&nbsp;${selectedSkill}`;
+        displaySkillInfo(skillToAdd);
+        const skillsBox = document.getElementById(`gangerSkillsInjuries${gangMemberNumber}`);
+        skillsBox.appendChild(skillToAdd);
+        hideSkillsModal();
+    }
+
+    const removeFromSkills = (gangMemberNumber, skill) => {
+        const skillsList = document.querySelectorAll(`#gangerSkillsInjuries${gangMemberNumber} span`);
+        skillsList.forEach(individual => {
+            if (individual.innerText.trim() == currentSelectedSkill.trim()) individual.remove()
+        });
+        hideSkillsInfoModal();
+    }
+
+    addSkills.forEach(button => {
+        button.addEventListener('click', e => {
+            currentGangMember = e.target.parentElement.id[e.target.parentElement.id.length - 1];
+            const skillOptions = document.querySelector('.skillOptions');
+            skillOptions.innerHTML = ``;
+            for (let item in as) {
+                const skillName = document.createElement('span');
+                skillName.innerHTML = item;
+                skillName.addEventListener('click', () => {
+                    document.querySelector('.skillDescriptions').innerHTML = as[item].description;
+                    currentSelectedSkill = item;
+                })
+                skillOptions.appendChild(skillName);
+            }
+            skillsModal.style.display = 'flex';
+        })
+    })
+
+    document.querySelector('.addSkill').addEventListener('click', () => {
+        addToSkills(currentGangMember, currentSelectedSkill);
+    })
+    document.querySelector('.removeSkill').addEventListener('click', e => {
+        removeFromSkills(currentGangMember, currentSelectedSkill);
+    })
+    document.querySelector('.closeSkill').addEventListener('click', e => {
+        hideSkillsInfoModal();
+    })
+</script>
+</html>

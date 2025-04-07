@@ -20,12 +20,14 @@
      <div class="tutorialModal">
         <div class="tutorial step1">add gang <br>members &rarr;</div>
         <div class="tutorial step2 saveProgress">save your<br>progress &rarr;</div>
-        <div class="tutorial step2 rollADice">roll one or<br>two dice &rarr;</div>
-        <div class="tutorial step2 addName">add ganger <br>&darr; &darr; &darr; &darr; name</div>
-        <div class="tutorial step2 adjustStats">&uarr; &uarr; &uarr; adjust <br>ganger stats</div>
-        <div class="tutorial step2 adjustStatus">&uarr; &uarr; &uarr; <br>tap to change <br>ganger status</div>
-        <div class="tutorial step2 adjustWounds">&uarr; &uarr; &uarr; &uarr; &uarr;<br>add or remove <br>flesh wounds</div>
-        <div class="tutorial step2 adjustWeapons">&uarr; &uarr; &uarr;<br>add weapons <br>and items</div>
+        <div class="tutorial step1 rollADice">roll &rarr; <br>dice &rarr;</div>
+        <div class="tutorial step2 addName">&uarr; &uarr; &uarr; <br>add <br>ganger <br>name</div>
+        <div class="tutorial step2 addType">add ganger <br>&darr; &darr; &darr; &darr; type</div>
+        <div class="tutorial step2 adjustWounds">tap blood drops to <br>adjust flesh wounds <br>&darr; &darr; &darr; &darr;</div>
+        <div class="tutorial step2 adjustStats">&uarr; &uarr; &uarr; adjust <br>ganger stat <br> values</div>
+        <div class="tutorial step2 adjustStatus">&uarr; &uarr; &uarr; <br>tap status text<br>to change <br>ganger status</div>
+        <div class="tutorial step2 adjustSkills">&uarr; &uarr; &uarr; &uarr; &uarr;<br>add skills <br>or injuries</div>
+        <div class="tutorial step2 adjustWeapons">&uarr; &uarr; &uarr;<br>use item button<br> to add weapons <br>and items</div>
         <div class="tutorial step2 adjustCostExp">add ganger cost/exp<br>&darr; &darr; &darr; &darr; &darr;</div>
         <div class="tutorial step2 remGanger">&uarr; &uarr; &uarr;<br>&uarr; &uarr; &uarr;<br>remove <br>ganger</div>
      </div>
@@ -106,6 +108,28 @@
         </div>
         <div class="close">Close menu</div>
     </div>
+    <div class="skillsModal">
+        <div class="result">
+            <div class="skillList">
+                <div class="skillOptions">
+                </div>
+                <div class="skillDescriptions">
+                    description of skill
+                </div>
+            </div>
+            <div class="addSkill">add skill</div>
+            <div class="closeItem">close</div>
+        </div>
+    </div>
+    <div class="skillsInfoModal">
+        <div class="result">
+            <div class="skillInjuryTitle">
+            </div>
+            <div class="skillInjuryDesc"></div>
+            <div class="removeSkill">remove</div>
+            <div class="closeSkill">close</div>
+        </div>
+    </div>
     <div class="diceRoller">
         <div class="diceResults">
             <div class="singleDiceRoll"></div>
@@ -158,64 +182,83 @@
             const gangMemberContainer = document.createElement('div');
             gangMemberContainer.classList.add(`gangMember`,`member${memberNumber}`)
             gangMemberContainer.innerHTML = `
-                <div class="memberName">
-                    <textarea id="name${memberNumber}">${ganger.name}</textarea>
-                </div>
-                <div class="memberNumber" id="member${memberNumber}">${memberNumber}</div>
-                <div class="characteristicsBox">
-                    <div class="statsBox">
-                        <div class="stat">
-                            <span>M</span>
-                            <input class="move" type="number" min="1" max="10" value="${ganger.move}" id="move${memberNumber}">
+                <div class="gangMember member${memberNumber}">
+                    <div class="memberNameAndType">
+                        <div class="memberType">
+                            <select name="type${memberNumber}" id="type${memberNumber}">
+                                <option value="Gang Leader">Gang Leader</option>
+                                <option value="Heavy">Heavy</option>
+                                <option value="Ganger">Ganger</option>
+                                <option value="Juve">Juve</option>
+                            </select>
                         </div>
-                        <div class="stat">
-                            <span>WS</span>
-                            <input class="ws skill" type="number" min="1" max="10" value="${ganger.ws}" id="ws${memberNumber}">
-                        </div>
-                        <div class="stat">
-                            <span>BS</span>
-                            <input class="bs skill" type="number" min="1" max="10" value="${ganger.bs}" id="bs${memberNumber}">
-                        </div>
-                        <div class="stat">
-                            <span>S</span>
-                            <input class="strength" type="number" min="1" max="10" value="${ganger.strength}" id="strength${memberNumber}">
-                        </div>
-                        <div class="stat">
-                            <span>T</span>
-                            <input class="toughness" type="number" min="1" max="10" value="${ganger.toughness}" id="toughness${memberNumber}">
-                        </div>
-                        <div class="stat">
-                            <span>W</span>
-                            <input class="wounds" type="number" min="1" max="10" value="${ganger.wounds}" id="wounds${memberNumber}">
-                        </div>
-                        <div class="stat">
-                            <span>I</span>
-                            <input class="initiative" type="number" min="1" max="10" value="${ganger.initiative}" id="initiative${memberNumber}">
-                        </div>
-                        <div class="stat">
-                            <span>A</span>
-                            <input class="attacks" type="number" min="1" max="10" value="${ganger.attacks}" id="attacks${memberNumber}">
-                        </div>
-                        <div class="stat">
-                            <span>Ld</span>
-                            <input class="leadership" type="number" min="1" max="10" value="${ganger.leadership}" id="leadership${memberNumber}">
+                        <div class="memberName">
+                            <textarea id="name${memberNumber}"></textarea>
+                            <div class="memberNumber" id="member${memberNumber}">${memberNumber}</div>
                         </div>
                     </div>
-                    <div class="fw" id="fw${memberNumber}">FW: </div>
-                </div>
-                <div class="equipmentBox" id="equipmentBox${memberNumber}">
-                    <div class="addEquipment" id="add${memberNumber}">item</div>
-                </div>
-                <div class="costBox">
-                    <span>cost</span>
-                    <input class="gangerCost" id="cost${memberNumber}" type="text" value="${ganger.cost}">
-                </div>
-                <div class="expBox">
-                    <span>exp</span>
-                    <input class="gangerExp" id="exp${memberNumber}" type="text" value="${ganger.exp}">
-                </div>
-                <div class="removeBox">
-                    <button class="gangerRemove" id="remove${memberNumber}" type="text" name="${ganger.name}">Kill</button>
+                    <div class="statsSkillsAndItems">
+                        <div class="statsAndItems">
+                            <div class="characteristicsBox">
+                                <div class="statsBox">
+                                    <div class="stat">
+                                        <span>M</span>
+                                        <input class="move" type="number" min="1" max="10" value="${ganger.move}" id="move${memberNumber}">
+                                    </div>
+                                    <div class="stat">
+                                        <span>WS</span>
+                                        <input class="ws skill" type="number" min="1" max="10" value="${ganger.ws}" id="ws${memberNumber}">
+                                    </div>
+                                    <div class="stat">
+                                        <span>BS</span>
+                                        <input class="bs skill" type="number" min="1" max="10" value="${ganger.bs}" id="bs${memberNumber}">
+                                    </div>
+                                    <div class="stat">
+                                        <span>S</span>
+                                        <input class="strength" type="number" min="1" max="10" value="${ganger.strength}" id="strength${memberNumber}">
+                                    </div>
+                                    <div class="stat">
+                                        <span>T</span>
+                                        <input class="toughness" type="number" min="1" max="10" value="${ganger.toughness}" id="toughness${memberNumber}">
+                                    </div>
+                                    <div class="stat">
+                                        <span>W</span>
+                                        <input class="wounds" type="number" min="1" max="10" value="${ganger.wounds}" id="wounds${memberNumber}">
+                                    </div>
+                                    <div class="stat">
+                                        <span>I</span>
+                                        <input class="initiative" type="number" min="1" max="10" value="${ganger.initiative}" id="initiative${memberNumber}">
+                                    </div>
+                                    <div class="stat">
+                                        <span>A</span>
+                                        <input class="attacks" type="number" min="1" max="10" value="${ganger.attacks}" id="attacks${memberNumber}">
+                                    </div>
+                                    <div class="stat">
+                                        <span>Ld</span>
+                                        <input class="leadership" type="number" min="1" max="10" value="${ganger.leadership}" id="leadership${memberNumber}">
+                                    </div>
+                                </div>
+                                <div class="fw" id="fw${memberNumber}">FW: </div>
+                            </div>
+                            <div class="equipmentBox" id="equipmentBox${memberNumber}">
+                                <div class="addEquipment" id="add${memberNumber}">item</div>
+                            </div>
+                            <div class="costBox">
+                                <span>cost</span>
+                                <input class="gangerCost" id="cost${memberNumber}" type="text" value="0">
+                            </div>
+                            <div class="expBox">
+                                <span>exp</span>
+                                <input class="gangerExp" id="exp${memberNumber}" type="text" value="0">
+                            </div>
+                            <div class="removeBox">
+                                <button class="gangerRemove" id="remove${memberNumber}" type="text" name="${ganger.name}">Kill</button>
+                            </div>
+                        </div>
+                        <div class="gangerSkillsInjuries" id="gangerSkillsInjuries${memberNumber}">
+                            <div class="addSkills" id="skills${memberNumber}">skills/injuries</div>
+                        </div>
+                    </div>
                 </div>
             `
             document.querySelector('body').appendChild(gangMemberContainer);
@@ -236,6 +279,24 @@
                 updateWSBS(member.value, gangMemberNumber);
                 member.addEventListener('change', e => {
                     updateWSBS(e.target.value, gangMemberNumber);
+                });
+            });
+            const addSkills = document.querySelectorAll('.addSkills');
+            addSkills.forEach(button => {
+                button.addEventListener('click', e => {
+                    currentGangMember = e.target.parentElement.id[e.target.parentElement.id.length - 1];
+                    const skillOptions = document.querySelector('.skillOptions');
+                    skillOptions.innerHTML = ``;
+                    for (let item in as) {
+                        const skillName = document.createElement('span');
+                        skillName.innerHTML = item;
+                        skillName.addEventListener('click', () => {
+                            document.querySelector('.skillDescriptions').innerHTML = as[item].description;
+                            currentSelectedSkill = item;
+                        });
+                        skillOptions.appendChild(skillName);
+                    }
+                    skillsModal.style.display = 'flex';
                 });
             });
             document.getElementById(`add${memberNumber}`).addEventListener('click', e => {
@@ -268,17 +329,6 @@
             });
         });
 
-        // const memberNames = document.querySelectorAll('.gangMember .memberName');
-        // memberNames.forEach(member => {
-        //     member.addEventListener('click', e => {
-        //         const gangMember = e.target.parentElement.classList[1];
-        //         const gangMemberNumber = gangMember[gangMember.length - 1];
-        //         const gangMemberBox = document.querySelector(`.member${gangMemberNumber}`);
-        //         const status = document.querySelector(`#status${gangMemberNumber}`);
-        //         gangMemberBox.classList.remove('pinned', 'downed', 'dead');
-        //         status.innerHTML = 'status: normal';
-        //     });
-        // });
         const killBoxes = document.querySelectorAll('.gangerRemove');
         killBoxes.forEach(box => box.addEventListener('click', (e) => {
             displayKillModal(e.target.id[e.target.id.length-1],e.target.name);
@@ -346,6 +396,7 @@
         fullGang.forEach((member, index) => {
             const memberData = {};
             memberData.name = document.getElementById(`name${index+1}`).value;
+            memberData.name = document.getElementById(`type${index+1}`).value;
             memberData.move = document.getElementById(`move${index+1}`).value;
             memberData.ws = document.getElementById(`ws${index+1}`).value;
             memberData.bs = document.getElementById(`bs${index+1}`).value;
@@ -361,6 +412,10 @@
             const rawInventory = document.getElementById(`equipmentBox${index+1}`).innerText;
             const inventory = rawInventory.replace('item','').trim().split(' ');
             inventory.forEach(item => memberData.inventory.push(item));
+            memberData.allSkills = [];
+            const rawSkills = document.getElementById(`gangerSkillsInjuries${index+1}`).innerText;
+            const finalSkills = rawSkills.replace('item','').trim().split(' ');
+            finalSkills.forEach(item => memberData.allSkills.push(item));
             saveState.push(memberData);
         });
         saveConfirmed();
@@ -371,12 +426,14 @@
 </script>
 <!-- <script src="./dummySquad.js"></script> -->
 <script src="./allEquipment.js"></script>
+<script src="./allSkills.js"></script>
 <script src="./inventoryModal.js"></script>
 <script src="./rollToHit.js"></script>
 <script src="./fleshWounds.js"></script>
 <script src="./statusChange.js"></script>
 <script src="./addGanger.js"></script>
 <script src="./addEquipModal.js"></script>
+<script src="./addSkillsModal.js"></script>
 <script src="./calcGangRating.js"></script>
 <script src="./calcCost.js"></script>
 <script src="./collapseEquipModal.js"></script>

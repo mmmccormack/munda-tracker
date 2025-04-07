@@ -20,16 +20,22 @@ img {
     width: 100%;
 }
 input,
-textarea {
+textarea,
+select,
+option {
     background: #050505;
     font-family: "Megrim", Helvetica, Arial, sans-serif;
     color: azure;
 }
 textarea {
-    width: 100%;
-    height: 60px;
+    width: 64px;
+    height: 62px;
     font-size: 12px;
     resize: none;
+    border: none;
+}
+select {
+    width: 100%;
     border: none;
 }
 .topBar {
@@ -66,37 +72,47 @@ textarea {
     text-align: left;
 }
 .rollADice {
-    top: 296px;
-    left: 670px;
-    text-align: left;
+    top: 286px;
+    left: 740px;
+    text-align: right;
 }
 .saveProgress {
     top: 4px;
     left: 610px;
     text-align: left;
 }
-.addName {
+.addType {
     top: 80px;
     left: 14px;
     text-align: left;
 }
+.adjustWounds {
+    top: 60px;
+    left: 154px;
+    text-align: left;
+}
+.addName {
+    top: 230px;
+    left: 14px;
+    text-align: left;
+}
 .adjustStats {
-    top: 210px;
+    top: 230px;
     left: 380px;
     text-align: right;
 }
 .adjustStatus {
-    top: 210px;
+    top: 230px;
     left: 240px;
 }
-.adjustWounds {
-    top: 210px;
+.adjustSkills {
+    top: 230px;
     left: 110px;
     text-align: left;
 }
 .adjustWeapons {
-    top: 210px;
-    left: 544px;
+    top: 230px;
+    left: 524px;
     text-align: right;
 }
 .adjustCostExp {
@@ -104,12 +120,14 @@ textarea {
     left: 608px;
 }
 .remGanger {
-    top: 210px;
+    top: 230px;
     left: 698px;
     text-align: right;
 }
 .invEquipmentModal,
-.killGangerModal {
+.killGangerModal,
+.skillsModal,
+.skillsInfoModal {
     position: absolute;
     left: 30%;
     display: none;
@@ -119,6 +137,13 @@ textarea {
     top: 30%;
     position: fixed;
     z-index: 100;
+}
+.skillsInfoModal {
+    width: 340px;
+}
+.skillsModal {
+    left: 20%;
+    width: 60%;
 }
 .killGangerModal .result {
     text-align: center;
@@ -227,7 +252,10 @@ textarea {
 }
 .remove,
 .close,
-.closeItem {
+.closeItem,
+.addSkill,
+.removeSkill,
+.closeSkill {
     border: 1px solid azure;
     border-radius: 12px;
     font-size: 125%;
@@ -236,8 +264,31 @@ textarea {
     text-align: center;
     margin-top: 10px;
 }
+.skillInjuryTitle {
+    border-bottom: 1px solid azure;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+.skillList {
+    display: flex;
+}
+.skillOptions {
+    width: 40%;
+    border: 1px solid azure;
+    display: flex;
+    flex-direction: column;
+    height: 220px;
+    overflow-y: scroll;
+}
+.skillDescriptions {
+    width: 60%;
+    border: 1px solid azure;
+    height: 220px;
+    overflow-y: scroll;
+}
 .gangMember {
     display: flex;
+    height: 70px;
 }
 .status {
     font-weight: bold;
@@ -279,6 +330,17 @@ input[type="text"] {
     width: 40px;
     font-size: 20px;
 }
+.memberNumber {
+    border: none;
+}
+
+.statsAndItems {
+    display: flex;
+    width: 646px;
+    height: 100%;
+}
+
+
 .costBox,
 .expBox {
     display: flex;
@@ -318,7 +380,16 @@ input.gangerRemove {
     width: 240px;
     position: relative;
 }
-.addEquipment {
+.gangerSkillsInjuries,
+.memberType {
+    display: flex;
+    align-items: center;
+    border: 1px solid azure;
+    height: 24px;
+    position: relative;
+}
+.addEquipment,
+.addSkills {
     width: 50px;
     font-size: 16px;
     border: 2px solid azure;
@@ -332,6 +403,11 @@ input.gangerRemove {
     right: 0;
     bottom: 0;
     padding: 2px;
+}
+.addSkills {
+    width: 100px;
+    font-size: 14px;
+    position: static;
 }
 input[type="number"]::-webkit-inner-spin-button {
     background-color: #050505;
@@ -380,8 +456,8 @@ input[type="number"]::-webkit-inner-spin-button {
 @media (max-width: 968px) {
     .rollADice {
         top: 66px;
-        left: 230px;
-        text-align: left;
+        left: 270px;
+        text-align: right;
     }
     .diceRoller {
         position: relative;
