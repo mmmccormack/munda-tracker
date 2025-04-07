@@ -184,7 +184,7 @@
             gangMemberContainer.innerHTML = `
                     <div class="memberNameAndType">
                         <div class="memberType">
-                            <select name="type${memberNumber}" id="type${memberNumber}">
+                            <select name="type${memberNumber}" id="type${memberNumber}" value="${ganger.type}">
                                 <option value="Gang Leader">Gang Leader</option>
                                 <option value="Heavy">Heavy</option>
                                 <option value="Ganger">Ganger</option>
@@ -192,7 +192,7 @@
                             </select>
                         </div>
                         <div class="memberName">
-                            <textarea id="name${memberNumber}"></textarea>
+                            <textarea id="name${memberNumber}">${ganger.name}</textarea>
                             <div class="memberNumber" id="member${memberNumber}">${memberNumber}</div>
                         </div>
                     </div>
@@ -394,7 +394,7 @@
         fullGang.forEach((member, index) => {
             const memberData = {};
             memberData.name = document.getElementById(`name${index+1}`).value;
-            memberData.name = document.getElementById(`type${index+1}`).value;
+            memberData.type = document.getElementById(`type${index+1}`).value;
             memberData.move = document.getElementById(`move${index+1}`).value;
             memberData.ws = document.getElementById(`ws${index+1}`).value;
             memberData.bs = document.getElementById(`bs${index+1}`).value;
