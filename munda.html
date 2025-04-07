@@ -431,7 +431,6 @@
             const rawSkills = document.getElementById(`gangerSkillsInjuries${index+1}`).innerText;
             console.log({rawSkills})
             const finalSkills = rawSkills.replace(/\n/g,' ').trim().split(' ');
-            finalSkills.shift();
             console.log({finalSkills})
             finalSkills.forEach(item => memberData.allSkills.push(item));
             saveState.push(memberData);
