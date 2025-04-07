@@ -255,7 +255,7 @@
                             </div>
                         </div>
                         <div class="gangerSkillsInjuries" id="gangerSkillsInjuries${memberNumber}">
-                            <div class="addSkills" id="skills${memberNumber}">skills/injuries</div>
+                            <div class="addSkills" id="skills${memberNumber}">special</div>
                         </div>
                     </div>
             `
@@ -429,7 +429,7 @@
             memberData.allSkills = [];
             const rawSkills = document.getElementById(`gangerSkillsInjuries${index+1}`).innerText;
             console.log({rawSkills})
-            const finalSkills = rawSkills.replace(`skills/injuries`,'').trim().split(' ');
+            const finalSkills = rawSkills.replace(`special`,'').trim().split(' ');
             console.log({finalSkills})
             finalSkills.forEach(item => memberData.allSkills.push(item));
             saveState.push(memberData);
