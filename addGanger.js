@@ -30,7 +30,6 @@ const addGanger = () => {
     const gangMemberContainer = document.createElement('div');
     gangMemberContainer.classList.add(`gangMember`,`member${memberNumber}`)
     gangMemberContainer.innerHTML = `
-            <div class="gangMember member${memberNumber}">
                 <div class="memberNameAndType">
                     <div class="memberType">
                         <select name="type${memberNumber}" id="type${memberNumber}">
@@ -107,7 +106,6 @@ const addGanger = () => {
                         <div class="addSkills" id="skills${memberNumber}">skills/injuries</div>
                     </div>
                 </div>
-            </div>
     `
     document.querySelector('body').appendChild(gangMemberContainer);
 
