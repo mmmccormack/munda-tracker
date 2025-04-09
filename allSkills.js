@@ -239,4 +239,59 @@ const as = {
         'type': 'injury',
         'roll': [2,5]
     },
+    'Blinded-In-One-Eye' : {
+        'description': `The fighter is injured in a random eye. A fighter with only one good eye has his Ballistic Skill reduced by -1. If the fighter is injured in an already injured eye then treat it as a Full Recovery result. If the fighter is blinded in both eyes then treat it as a Dead result.`,
+        'type': 'injury',
+        'roll': [2,6]
+    },
+    'Partially-Deafened' : {
+        'description': `The fighter survives but is partially deafened as a result of his injuries. His Initiative characteristic is reduced by -1.`,
+        'type': 'injury',
+        'roll': [3,1]
+    },
+    'Shell-Shock' : {
+        'description': `The fighter survives but is extremely nervous and jumpy due to the traumatic injuries he has suffered. His Leadership characteristic is reduced by -1.`,
+        'type': 'injury',
+        'roll': [3,2]
+    },
+    'Hand-Injury' : {
+        'description': `The fighter has badly wounded one of his hands. The fighter's Weapon Skill characteristic is reduced by -1. Randomly determine which hand has been hurt.`,
+        'type': 'injury',
+        'roll': [3,3]
+    },
+    'Old-Battle-Wound' : {
+        'description': `The fighter recovers but his old wound sometimes affects his health. Roll a D6 before each game for each Old Battle Wound suffered. On the roll of a 1 the fighter’s old wound is playing up and he is unable to take part in the forthcoming battle.`,
+        'type': 'injury',
+        'roll': [[3,3],[3,4],[3,5],[3,6]]
+    },
+    'Full-Recovery' : {
+        'description': `The fighter has been knocked unconscious or suffers a mildly incapacitating wound from which he makes a full recovery.`,
+        'type': 'injury',
+        'roll': [[4,1],[4,2],[4,3],[4,4],[4,5],[4,6],[5,1],[5,2],[5,3],[5,4],[5,5]]
+    },
+    'Bitter-Emnity' : {
+        'description': `Although he makes a full physical recovery, the fighter has been mentally scarred by his experiences. He develops a bitter enmity for the gang responsible for his injury. Roll a D6 to see who he now hates. 1-4: The individual enemy who inflicted the injury (if unknown, roll a random enemy model). 5-6: The leader of the gang who inflicted the injury.`,
+        'type': 'injury',
+        'roll': [5,6]
+    },
+    'Captured' : {
+        'description': `The fighter is captured. If both gangs hold captives then they must be exchanged one-for-one with their gear starting with models of highest value. Remaining captives are ransomed back to their gang. There is no fixed value for ransoms, it's up to the players to negotiate deals on captives, their gear and how they are paid for. If a player refuses to rescue or pay a ransom then the captive must be sold to the Guild slavers, earning the captor D6x5 credits, and you may keep their equipment. Any credits earned are added straight to your stash. The status of a captured fighter must be resolved before or immediately following the next time the two gangs fight each other.`,
+        'type': 'injury',
+        'roll': [[6,1],[6,2],[6,3]]
+    },
+    'Horrible-Scars' : {
+        'description': `The fighter recovers but is left horribly disfigured. His scarred and distorted features means he causes fear.`,
+        'type': 'injury',
+        'roll': [6,4]
+    },
+    'Impressive-Scars' : {
+        'description': `The fighter recovers and is left with impressive scars as testament to his bravery. The model receives a +1 Leadership bonus. This bonus applies only once.`,
+        'type': 'injury',
+        'roll': [6,5]
+    },
+    'Survives-Against-The-Odds' : {
+        'description': `The fighter regains consciousness alone in the darkness, given up for dead by his companions and overlooked by his enemies. Despite his injuries he makes his way back home. He recovers fully and his uncanny survival earns him +2D6 Experience points.`,
+        'type': 'injury',
+        'roll': [6,6]
+    },
 }
