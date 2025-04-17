@@ -19,6 +19,9 @@ body {
 img {
     width: 100%;
 }
+i {
+    padding-left: 2px;
+}
 input,
 textarea,
 select,
@@ -93,26 +96,26 @@ select {
     text-align: left;
 }
 .addName {
-    top: 230px;
+    top: 240px;
     left: 14px;
     text-align: left;
 }
 .adjustStats {
-    top: 60px;
+    top: 210px;
     left: 380px;
-    text-align: right;
+    text-align: center;
 }
 .adjustStatus {
-    top: 230px;
+    top: 210px;
     left: 240px;
 }
 .adjustSkills {
-    top: 230px;
+    top: 240px;
     left: 110px;
     text-align: left;
 }
 .adjustWeapons {
-    top: 230px;
+    top: 240px;
     left: 524px;
     text-align: right;
 }
@@ -121,7 +124,7 @@ select {
     left: 608px;
 }
 .remGanger {
-    top: 230px;
+    top: 240px;
     left: 698px;
     text-align: right;
 }
