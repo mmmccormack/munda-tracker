@@ -38,7 +38,7 @@
             const user = userCredential.user;
             // ...
             localStorage.setItem("user", user.uid);
-            window.location.href = "staging.html";
+            window.location.href = "munda.html";
         })
         .catch((error) => {
             const errorCode = error.code;
