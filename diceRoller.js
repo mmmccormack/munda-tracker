@@ -1,7 +1,7 @@
 const singleRoll = () => {
     let counter = 1;
     setInterval( () => {
-        if (counter < 60) {
+        if (counter < 50) {
             document.querySelector('.singleDiceRoll').innerHTML = ``;
             document.querySelector('.doubleDiceRoll').innerHTML = ``;
             const result = Math.floor(Math.random() * 6) + 1;
@@ -17,7 +17,7 @@ const singleRoll = () => {
 const doubleRoll = () => {
     let counter = 1;
     setInterval( () => {
-        if (counter < 60) {
+        if (counter < 50) {
             document.querySelector('.singleDiceRoll').innerHTML = ``;
             document.querySelector('.doubleDiceRoll').innerHTML = ``;
             const resultOne = Math.floor(Math.random() * 6) + 1;
